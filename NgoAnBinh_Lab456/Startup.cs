@@ -9,6 +9,7 @@ namespace NgoAnBinh_Lab456
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
         }
     }
 }
