@@ -21,4 +21,6 @@ namespace NgoAnBinh_Lab456.Models
         public byte CategoryId { get; set; }
 
     }
+
+
 }
