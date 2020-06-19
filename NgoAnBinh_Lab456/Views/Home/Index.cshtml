@@ -1,57 +1,81 @@
-﻿@model IEnumerable<NgoAnBinh_Lab456.Models.Course>
+﻿@model NgoAnBinh_Lab456.ViewModels.CourseViewModel
 @{
     ViewBag.Title = "Home Page";
 }
+@using Microsoft.AspNet.Identity
+<div class="Row">
+    <h1>Schedule</h1>
+    <ul class="course">
+        @foreach (var course in Model.UpCommingCourses)
+        {
 
-<ul class="course">
-    @foreach (var course in Model.UpcomingCourses)
-    {
-        <li>
-            <div class="date">
-                <div class="month">
-                    @course.DateTime.ToString("MM")
+            <li>
+
+                <div class="date">
+                    <div class="day">
+                        @course.DateTime.ToString("dd")
+                    </div>
+                    <div class="month">
+                        @course.DateTime.ToString("MM")
+                    </div>
                 </div>
-                <div class="day">
-                    @course.DateTime.ToString("dd")
-                </div>
-            </div>
-            <div class="details">
-                <div>
-                    <span class="lecturer">
+
+                <div class="details">
+                    <div class="lecturer">
+
                         @course.Lecturer.Name
+
                         @if (Model.ShowAction)
                         {
-                            foreach (var fl in Model.Follows)
+                            if (@course.LecturerId == User.Identity.GetUserId()) { }
+                            else
                             {
-                                if (@course.Lecturer.Name == @fl.Name)
-                                {
-                                    <button style="border-color:white; color:blue" class="btn btn-default btn-sm">Following</button>
+                                bool isFollowing = Model.ListOfFollowings.Any(f => f.Followee.Id == @course.LecturerId);
+                                if (isFollowing == true)
+                                {<button data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-toggle-follow">
+                                        Following
+                                    </button>
                                 }
                                 else
                                 {
-                                    <button style="border-color:white; color:blue" class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow</button>
+                                    <button data-user-id="@course.LecturerId" class="btn btn-link btn-sm js-toggle-follow">
+                                        Follow
+                                    </button>
                                 }
                             }
-
                         }
-                    </span>
-                </div>
-                <div>
-                    <span class="category">
+                    </div>
+                    <div class="category">
+
                         @course.Category.Name
-                    </span>
-                    @if (Model.ShowAction)
-                    {
 
-                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
-                    }
-
+                        @if (Model.ShowAction)
+                        {
+                            if (@course.LecturerId == User.Identity.GetUserId())
+                            { }
+                            else
+                            {
+                                bool isGoing = Model.ListOfAttendedCourses.Any(c => c.CourseId == @course.Id);
+                                if (isGoing == true)
+                                {
+                                    <button data-course-id="@course.Id" class="btn btn-info btn-sm js-toggle-attendance">Going</button>
+                                }
+                                else
+                                {
+                                    <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going ?</button>
+                                }
+                            }
+                        }
+                    </div>
+                    <a href="@Url.Action("Detail", "Courses", new {id = course.Id })" class="btn btn-success">
+                        Detail
+                    </a>
                 </div>
 
-            </div>
-        </li>
-    }
-</ul>
+            </li>
+        }
+    </ul>
+</div>
 @section scripts
 {
     <script>
@@ -60,10 +84,17 @@
                 var button = $(e.target);
                 $.post("/api/attendances", { courseId: button.attr("data-course-id") })
                     .done(function () {
-                        button
-                            .removeClass("btn-default")
-                            .addClass("btn-info")
-                            .text("Going");
+                        if (button.text().trim() === "Going ?") {
+                            button
+                                .removeClass("btn-default")
+                                .addClass("btn-info")
+                                .text("Going");
+                        } else {
+                            button
+                                .removeClass("btn-info")
+                                .addClass("btn-default")
+                                .text("Going ?");
+                        }
                     })
                     .fail(function () {
                         alert("Something failed!");
@@ -73,7 +104,12 @@
                 var button = $(e.target);
                 $.post("/api/followings", { followeeId: button.attr("data-user-id") })
                     .done(function () {
-                        button.text("Following");
+                        if (button.text().trim() === "Follow") {
+                            button.text("Following");
+                        }
+                        else {
+                            button.text("Follow");
+                        }
                     })
                     .fail(function () {
                         alert("Something failed!");
@@ -82,3 +118,22 @@
         });
     </script>
 }
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            Hello
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>

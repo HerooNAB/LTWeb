@@ -41,7 +41,7 @@ namespace NgoAnBinh_Lab456.Controllers
                 {
                     ListOfAttendedCourses = listOfAttendedCourses,
                     ListOfFollowings = followingLecturers,
-                    UpcomingCourses = upCommingCourses,
+                    UpCommingCourses = upCommingCourses,
                     ShowAction = User.Identity.IsAuthenticated
                 };
                 return View(viewModel);
@@ -69,7 +69,7 @@ namespace NgoAnBinh_Lab456.Controllers
                 {
                     ListOfAttendedCourses = listOfAttendedCourses,
                     ListOfFollowings = followingLecturers,
-                    UpcomingCourses = upCommingCourses,
+                    UpCommingCourses = upCommingCourses,
                     ShowAction = User.Identity.IsAuthenticated
                 };
                 return View(viewModel);

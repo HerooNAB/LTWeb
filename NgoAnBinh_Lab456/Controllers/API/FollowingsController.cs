@@ -4,12 +4,12 @@ using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Http;
 
-namespace NgoAnBinh_Lab456.Controllers
+namespace Ngo.Controllers
 {
 
     public class FollowingsController : ApiController
     {
-
+       
         private readonly ApplicationDbContext _dbContext;
         public FollowingsController()
         {
@@ -32,18 +32,17 @@ namespace NgoAnBinh_Lab456.Controllers
                 _dbContext.SaveChanges();
                 return Ok();
             }
-            else
-            {
-                var following = new Following
-                {
-                    FollowerId = userId,
-                    FolloweeId = followingDto.FolloweeId,
+            else {
+                var following = new Following 
+                { 
+                FollowerId = userId,
+                FolloweeId = followingDto.FolloweeId,              
                 };
 
                 _dbContext.Followings.Add(following);
-                _dbContext.SaveChanges();
+                _dbContext.SaveChanges();               
                 return Ok();
-            }
-        }
+            }      
+        }       
     }
 }

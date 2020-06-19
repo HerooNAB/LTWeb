@@ -1,4 +1,4 @@
-namespace NgoAnBinh_Lab456.Migrations
+namespace BigSchool.Migrations
 {
     using System;
     using System.Data.Entity;
