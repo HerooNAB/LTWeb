@@ -66,10 +66,17 @@
                 var button = $(e.target);
                 $.post("/api/attendances", { courseId: button.attr("data-course-id") })
                     .done(function () {
-                        button
-                            .removeClass("btn-default")
-                            .addClass("btn-info")
-                            .text("Going");
+                        if (button.text().trim() === "Going ?") {
+                            button
+                                .removeClass("btn-default")
+                                .addClass("btn-info")
+                                .text("Going");
+                        } else {
+                            button
+                                .removeClass("btn-info")
+                                .addClass("btn-default")
+                                .text("Going ?");
+                        }
                     })
                     .fail(function () {
                         alert("Something failed!");
