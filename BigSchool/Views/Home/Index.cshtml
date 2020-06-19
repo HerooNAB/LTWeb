@@ -67,7 +67,7 @@
                         }
                     </div>
                     <a href="@Url.Action("Detail", "Courses", new {id = course.Id })" class="btn btn-success">
-                        Detail
+                        Details
                     </a>
                 </div>
 
@@ -99,6 +99,8 @@
                         alert("Something failed!");
                     });
             });
+
+
             $(".js-toggle-follow").click(function (e) {
                 var button = $(e.target);
                 $.post("/api/followings", { followeeId: button.attr("data-user-id") })
