@@ -20,21 +20,26 @@ namespace NgoAnBinh_Lab456.ViewModels
         public string Time { get; set; }
         [Required]
         public byte Category { get; set; }
-        public IEnumerable<Category> Categories { get; set; }
-        public DateTime GetDateTime()
-        {
-            return DateTime.Parse(string.Format("{0} {1}", Date, Time));
-        }
-        public IEnumerable<Course> UpcomingCourses { get; set; }
-        public List<Attendance> ListOfAttendedCourses { get; set; }
-
-        public List<Following> ListOfFollowings { get; set; }
-        public List<Following> ListOfFollowers { get; set; }
         public string Heading { get; set; }
         public string Action
         {
             get { return (Id != 0) ? "Update" : "Create"; }
         }
+        public IEnumerable<Category> Categories { get; set; }
+        public IEnumerable<Course> UpCommingCourses { get; set; }
+
+        public string searching { get; set; }
+        public List<Attendance> ListOfAttendedCourses { get; set; }
+
+        public List<Following> ListOfFollowings { get; set; }
+        public List<Following> ListOfFollowers { get; set; }
+
         public bool ShowAction { get; set; }
+
+        public DateTime GetDateTime()
+        {
+            return DateTime.Parse(string.Format("{0} {1}", Date, Time));
+        }
+
     }
 }

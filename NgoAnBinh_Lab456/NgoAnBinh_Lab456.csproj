@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -214,9 +215,37 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202006190910175_InitialModel.cs" />
-    <Compile Include="Migrations\202006190910175_InitialModel.Designer.cs">
-      <DependentUpon>202006190910175_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\202006050631269_InitialModel.cs" />
+    <Compile Include="Migrations\202006050631269_InitialModel.Designer.cs">
+      <DependentUpon>202006050631269_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006050638175_InitialModel1.cs" />
+    <Compile Include="Migrations\202006050638175_InitialModel1.Designer.cs">
+      <DependentUpon>202006050638175_InitialModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006050639439_CreateTableCourse.cs" />
+    <Compile Include="Migrations\202006050639439_CreateTableCourse.Designer.cs">
+      <DependentUpon>202006050639439_CreateTableCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006050639599_PopulateCategoryTable.cs" />
+    <Compile Include="Migrations\202006050639599_PopulateCategoryTable.Designer.cs">
+      <DependentUpon>202006050639599_PopulateCategoryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006050641030_AddNameColumnToApplicationUser.cs" />
+    <Compile Include="Migrations\202006050641030_AddNameColumnToApplicationUser.Designer.cs">
+      <DependentUpon>202006050641030_AddNameColumnToApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006050641439_AddAttendance.cs" />
+    <Compile Include="Migrations\202006050641439_AddAttendance.Designer.cs">
+      <DependentUpon>202006050641439_AddAttendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006131559407_AddAttendance1.cs" />
+    <Compile Include="Migrations\202006131559407_AddAttendance1.Designer.cs">
+      <DependentUpon>202006131559407_AddAttendance1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006191402041_ModifyAttendance.cs" />
+    <Compile Include="Migrations\202006191402041_ModifyAttendance.Designer.cs">
+      <DependentUpon>202006191402041_ModifyAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -294,6 +323,7 @@
     <Content Include="Views\Courses\Create.cshtml" />
     <Content Include="Views\Courses\Attending.cshtml" />
     <Content Include="Views\Courses\Mine.cshtml" />
+    <Content Include="Views\Courses\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -307,8 +337,31 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006190910175_InitialModel.resx">
-      <DependentUpon>202006190910175_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002240247153_AddNameColumnToApplicationUser.resx" />
+    <EmbeddedResource Include="Migrations\202002260818509_RemoveFollowStatusColumn.resx" />
+    <EmbeddedResource Include="Migrations\202006050631269_InitialModel.resx">
+      <DependentUpon>202006050631269_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006050638175_InitialModel1.resx">
+      <DependentUpon>202006050638175_InitialModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006050639439_CreateTableCourse.resx">
+      <DependentUpon>202006050639439_CreateTableCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006050639599_PopulateCategoryTable.resx">
+      <DependentUpon>202006050639599_PopulateCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006050641030_AddNameColumnToApplicationUser.resx">
+      <DependentUpon>202006050641030_AddNameColumnToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006050641439_AddAttendance.resx">
+      <DependentUpon>202006050641439_AddAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006131559407_AddAttendance1.resx">
+      <DependentUpon>202006131559407_AddAttendance1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006191402041_ModifyAttendance.resx">
+      <DependentUpon>202006191402041_ModifyAttendance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

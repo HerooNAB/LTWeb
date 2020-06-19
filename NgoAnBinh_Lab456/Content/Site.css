@@ -1,4 +1,4 @@
-﻿﻿body {
+﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -23,53 +23,51 @@ textarea {
     max-width: 280px;
 }
 
-/*Thay doi giao dien thanh menu*/
-.navbar-inverse {
-    background-color: #d41d50;
-    border-color: #fbf6f6;
+ul {
+    list-style: none
 }
 
-    .navbar-inverse .navbar-nav > li > a {
-        color: white;
-    }
-
-    .navbar-inverse .navbar-brand {
-        color: white;
-    }
-/*Course Layout*/
 .course {
-    list-style: none;
+    list-style: none,
 }
 
     .course > li {
         position: relative;
-        margin-bottom: 30px;
+        margin-bottom: 5%;
+        width: 30%;
+        height: 100px;
+        background-color: darkgray;
+        border-radius: 0.5em;
     }
 
         .course > li .date {
+            background-color: darkcyan;
+            line-height: 50px;
             text-align: center;
-            background-color: #d41d50;
             color: white;
             width: 60px;
-            border-radius: 8px;
+            border-top-left-radius: 0.5em;
+            border-bottom-left-radius: 0.5em;
         }
 
-        .course > li .details {
+        .course > li > .details {
+            color: white;
             position: absolute;
             top: 0;
-            left: 70px;
+            left: 90px;
+            padding: 5px;
+            border-radius: 0.5em;
         }
 
-.fllecturer {
-    font-size: 20px;
-}
+        .course > li .action {
+            display: none;
+            left: 90px;
+            position: absolute
+        }
 
-.course > li .action {
-    display: none;
-    left: 70px;
-    position: absolute;
-}
+        .course > li:hover .action {
+            display: block;
+        }
 
-.course > li:hover .action {
-    display: block;
+* {
 }
